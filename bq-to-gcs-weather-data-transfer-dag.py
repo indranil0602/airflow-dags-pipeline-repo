@@ -4,7 +4,6 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.google.cloud.transfers.bigquery_to_gcs import BigQueryToGCSOperator
 from airflow.providers.google.cloud.sensors.gcs import GCSObjectExistenceSensor
-
 from datetime import datetime, timedelta
 
 def _print_func():
