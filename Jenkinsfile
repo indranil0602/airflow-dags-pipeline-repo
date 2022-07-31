@@ -9,15 +9,15 @@ pipeline {
                     sh """
                     git diff --name-only HEAD HEAD~1 > change.txt
                     cat change.txt
-                    if [[ \$(cat change.txt | grep \".py\") ]]; then
-                        cat change.txt | grep \".py\" > change.txt
+                    if [ \$(cat change.txt | grep \".py\") ]; then
+                        cat change.txt | grep \".py\" > changedPythonFile.txt
                     else
                         echo "No python file changed"
                         exit 1
                     fi
-                    cat change.txt
+                    cat changedPythonFile.txt
                     """
-                    changedFile = readFile('change.txt')
+                    changedFile = readFile('changedPythonFile.txt')
                     print "changedFile: ${changedFile}"
                     // googleStorageUpload bucket: 'gs://jenkins-upload-demo-bucket', credentialsId: 'indranil-json', pattern: '*.txt'
                 }
