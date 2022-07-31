@@ -16,7 +16,7 @@ args = {
 	'retry_delay':timedelta(seconds=10)
 }
 
-with DAG('bq-to-gcs-weather-data-transfer-dag', default_args=args, schedule_interval='@daily', catchup=False) as dag:
+with DAG('bq-to-gcs-weather-data-transfer-dag', default_args=args, schedule_interval=None, catchup=False) as dag:
 	
     start_task=BashOperator(
         task_id='start_task',
